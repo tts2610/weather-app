@@ -72,7 +72,7 @@ export default class App extends Component {
               image: image,
             },
           ],
-          isLoading: false,
+          isLoading: true,
         });
       })
       .catch((error) => {

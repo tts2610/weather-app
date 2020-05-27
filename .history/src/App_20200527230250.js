@@ -72,12 +72,13 @@ export default class App extends Component {
               image: image,
             },
           ],
-          isLoading: false,
         });
       })
       .catch((error) => {
         alert(`Data could not be fetched ${error.message}`);
       });
+
+    setTimeout(this.setState({ isLoading: true }), 5000);
   };
 
   getCurrentCityWeather = (lon, lat) => {
@@ -130,7 +131,7 @@ export default class App extends Component {
   }
 
   render() {
-    if (this.state.isLoading) return <MySpinner />;
+    if (!this.state.isLoading) return <MySpinner />;
     return (
       <div className="container-fluid text-white my-auto">
         <div className="container mx-auto my-4 py-4">

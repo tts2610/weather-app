@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, Suspense } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 import MySpinner from "./components/Spinner";
@@ -132,16 +132,18 @@ export default class App extends Component {
   render() {
     if (this.state.isLoading) return <MySpinner />;
     return (
-      <div className="container-fluid text-white my-auto">
-        <div className="container mx-auto my-4 py-4">
-          <div className="row justify-content-center text-center">
-            <h1 className="col-12 display-4 my-2 py-3 title">
-              Awesome Weather App
-            </h1>
-            <Carosel cities={this.state.cities} />
+      <Suspense fallback={<MySpinner />}>
+        <div className="container-fluid text-white my-auto">
+          <div className="container mx-auto my-4 py-4">
+            <div className="row justify-content-center text-center">
+              <h1 className="col-12 display-4 my-2 py-3 title">
+                Awesome Weather App
+              </h1>
+              <Carosel cities={this.state.cities} />
+            </div>
           </div>
         </div>
-      </div>
+      </Suspense>
     );
   }
 }

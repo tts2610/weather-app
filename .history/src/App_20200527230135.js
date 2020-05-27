@@ -44,7 +44,7 @@ export default class App extends Component {
     super(props);
     this.state = {
       cities: [],
-      isLoading: true,
+      isLoading: false,
     };
   }
 
@@ -78,6 +78,8 @@ export default class App extends Component {
       .catch((error) => {
         alert(`Data could not be fetched ${error.message}`);
       });
+
+    // setTimeout(this.setState({ isLoading: false }), 5000);
   };
 
   getCurrentCityWeather = (lon, lat) => {
