@@ -1,9 +1,10 @@
 import React, { Component } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
+import MySpinner from "./components/Spinner";
 import Carosel from "./components/Carosel";
 import { css } from "@emotion/core";
-import BeatLoader from "react-spinners/BeatLoader";
+import BarLoader from "react-spinners/BarLoader";
 let API_KEY = process.env.REACT_APP_APIKEY;
 
 const override = css`
@@ -12,6 +13,8 @@ const override = css`
   left: 50%;
   margin-top: -50px;
   margin-left: -50px;
+  width: 100px;
+  height: 100px;
 `;
 let cities = {
   san_francisco: {
@@ -87,7 +90,7 @@ export default class App extends Component {
       });
     setTimeout(() => {
       this.setState({ isLoading: false });
-    }, 2000);
+    }, 4000);
   };
 
   getCurrentCityWeather = (lon, lat) => {
@@ -142,11 +145,10 @@ export default class App extends Component {
   render() {
     if (this.state.isLoading)
       return (
-        <BeatLoader
+        <BarLoader
           css={override}
-          size={40}
-          margin={2}
-          color={"orange"}
+          size={70}
+          color={"#123abc"}
           loading={this.state.isLoading}
         />
       );

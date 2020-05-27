@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
+import MySpinner from "./components/Spinner";
 import Carosel from "./components/Carosel";
 import { css } from "@emotion/core";
 import BeatLoader from "react-spinners/BeatLoader";

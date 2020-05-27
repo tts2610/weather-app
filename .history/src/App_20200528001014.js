@@ -1,17 +1,16 @@
 import React, { Component } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
+import MySpinner from "./components/Spinner";
 import Carosel from "./components/Carosel";
 import { css } from "@emotion/core";
-import BeatLoader from "react-spinners/BeatLoader";
+import PacmanLoader from "react-spinners/PacmanLoader";
 let API_KEY = process.env.REACT_APP_APIKEY;
 
 const override = css`
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  margin-top: -50px;
-  margin-left: -50px;
+  display: block;
+  margin: 0 auto;
+  border-color: red;
 `;
 let cities = {
   san_francisco: {
@@ -85,9 +84,9 @@ export default class App extends Component {
       .catch((error) => {
         alert(`Data could not be fetched ${error.message}`);
       });
-    setTimeout(() => {
-      this.setState({ isLoading: false });
-    }, 2000);
+    // setTimeout(() => {
+    //   this.setState({ isLoading: false });
+    // }, 4000);
   };
 
   getCurrentCityWeather = (lon, lat) => {
@@ -142,11 +141,10 @@ export default class App extends Component {
   render() {
     if (this.state.isLoading)
       return (
-        <BeatLoader
+        <PacmanLoader
           css={override}
-          size={40}
-          margin={2}
-          color={"orange"}
+          size={50}
+          color={"#123abc"}
           loading={this.state.isLoading}
         />
       );

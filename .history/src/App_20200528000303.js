@@ -1,18 +1,10 @@
 import React, { Component } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
+import MySpinner from "./components/Spinner";
 import Carosel from "./components/Carosel";
-import { css } from "@emotion/core";
-import BeatLoader from "react-spinners/BeatLoader";
 let API_KEY = process.env.REACT_APP_APIKEY;
 
-const override = css`
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  margin-top: -50px;
-  margin-left: -50px;
-`;
 let cities = {
   san_francisco: {
     apiUrl: `https://api.openweathermap.org/data/2.5/weather?appid=${API_KEY}&units=metric&id=1689969`,
@@ -87,7 +79,7 @@ export default class App extends Component {
       });
     setTimeout(() => {
       this.setState({ isLoading: false });
-    }, 2000);
+    }, 4000);
   };
 
   getCurrentCityWeather = (lon, lat) => {
@@ -141,15 +133,7 @@ export default class App extends Component {
 
   render() {
     if (this.state.isLoading)
-      return (
-        <BeatLoader
-          css={override}
-          size={40}
-          margin={2}
-          color={"orange"}
-          loading={this.state.isLoading}
-        />
-      );
+      return <ClipLoader size={150} color={"#123abc"} loading={true} />;
     return (
       <div className="container-fluid text-white my-auto">
         <div className="container mx-auto my-4 py-4">
@@ -157,7 +141,6 @@ export default class App extends Component {
             <h1 className="col-12 display-4 my-2 py-3 title">
               Awesome Weather App
             </h1>
-
             <Carosel cities={this.state.cities} />
           </div>
         </div>
