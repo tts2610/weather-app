@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
-let API_KEY = process.env.REACT_APP_APIKEY;
+const API_KEY = process.env.REACT_APP_APIKEY;
 
 export default class App extends Component {
   state = {

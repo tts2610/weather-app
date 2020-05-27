@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
-let API_KEY = process.env.REACT_APP_APIKEY;
+const API_KEY = "2fffa1dac56aeaa4810e198e2b088a34";
 
 export default class App extends Component {
   state = {
@@ -54,7 +54,7 @@ export default class App extends Component {
             </h1>
             <h2 className="col-12">{this.state.weatherResult.locationName}</h2>
             <h3 className="col-12 text-danger">
-              {this.state.weatherResult.temperature[0]}&deg;C /{" "}
+              {this.state.weatherResult.temperature[0]}&deg;C /
               {this.state.weatherResult.temperature[1]}&deg;F
             </h3>
             <h3 className="col-12">{this.state.weatherResult.description}</h3>

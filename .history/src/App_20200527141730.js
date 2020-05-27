@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
-let API_KEY = process.env.REACT_APP_APIKEY;
+const API_KEY = "2fffa1dac56aeaa4810e198e2b088a34";
 
 export default class App extends Component {
   state = {
@@ -17,21 +17,18 @@ export default class App extends Component {
   // }
 
   getCurrentWeather = async (lon, lat) => {
-    let url_1 = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=metric`;
-    let url_2 = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=imperial`;
-    let data_1 = await fetch(url_1);
-    let result_1 = await data_1.json();
-    let data_2 = await fetch(url_2);
-    let result_2 = await data_2.json();
+    let url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=metric&units=imperial`;
+    let data = await fetch(url);
+    let result = await data.json();
     this.setState({
       weatherResult: {
-        locationName: result_1.name,
-        temperature: [result_1.main.temp, result_2.main.temp],
-        description: result_1.weather[0].description,
+        locationName: result.name,
+        temperature: result.main.temp,
+        description: result.weather[0].description,
       },
     });
 
-    console.log(result_1);
+    console.log(result);
   };
 
   getLocation = () => {
@@ -54,8 +51,7 @@ export default class App extends Component {
             </h1>
             <h2 className="col-12">{this.state.weatherResult.locationName}</h2>
             <h3 className="col-12 text-danger">
-              {this.state.weatherResult.temperature[0]}&deg;C /{" "}
-              {this.state.weatherResult.temperature[1]}&deg;F
+              {this.state.weatherResult.temperature}&deg;C
             </h3>
             <h3 className="col-12">{this.state.weatherResult.description}</h3>
           </div>
