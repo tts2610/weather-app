@@ -6,12 +6,8 @@ import Carosel from "./components/Carosel";
 let API_KEY = process.env.REACT_APP_APIKEY;
 
 let cities = {
-  san_francisco: {
-    apiUrl: `https://api.openweathermap.org/data/2.5/weather?appid=${API_KEY}&units=metric&id=1689969`,
-    image:
-      "https://uhdwallpapers.org/uploads/converted/18/05/17/san-francisco-cityscape-1920x1080_76474-mm-90.jpg",
-  },
   tokyo: {
+    forecast: `http://api.openweathermap.org/data/2.5/forecast?q=tokyo&appid=${API_KEY}`,
     apiUrl: `https://api.openweathermap.org/data/2.5/weather?id=1850147&units=metric&appid=${API_KEY}`,
     image:
       "https://cdn-a.william-reed.com/var/wrbm_gb_food_pharma/storage/images/5/7/9/1/841975-1-eng-GB/Lonza-to-help-Nikon-set-up-a-contract-cell-and-gene-therapy-manufacturing-business-in-Japan.jpg",
@@ -27,15 +23,6 @@ let cities = {
   miami: {
     apiUrl: `https://api.openweathermap.org/data/2.5/weather?appid=${API_KEY}&units=metric&id=5304640`,
     image: "https://wallpaperplay.com/walls/full/d/d/5/363385.jpg",
-  },
-  paris: {
-    apiUrl: `https://api.openweathermap.org/data/2.5/weather?appid=${API_KEY}&units=metric&id=2968815`,
-    image: "https://wallpaperset.com/w/full/e/0/4/24876.jpg",
-  },
-  vancouver: {
-    apiUrl: `https://api.openweathermap.org/data/2.5/weather?appid=${API_KEY}&units=metric&id=5814616`,
-    image:
-      "https://images.wallpapersden.com/image/download/vancouver-canada-british-columbia_16957_1920x1080.jpg",
   },
 };
 
@@ -72,14 +59,11 @@ export default class App extends Component {
               image: image,
             },
           ],
-          isLoading: false,
         });
       })
       .catch((error) => {
         alert(`Data could not be fetched ${error.message}`);
       });
-
-    // setTimeout(this.setState({ isLoading: false }), 5000);
   };
 
   getCurrentCityWeather = (lon, lat) => {
@@ -108,13 +92,8 @@ export default class App extends Component {
               image: "https://wallpaperaccess.com/full/1631415.jpg",
             },
           ],
+          isLoading: false,
         });
-
-        for (var key in cities) {
-          if (cities.hasOwnProperty(key)) {
-            this.getCurrentWeather(cities[key].apiUrl, cities[key].image);
-          }
-        }
       })
       .catch((error) => {
         alert(`Data could not be fetched ${error.message}`);
@@ -129,6 +108,15 @@ export default class App extends Component {
 
   componentDidMount() {
     this.getLocation();
+    for (var key in cities) {
+      if (cities.hasOwnProperty(key)) {
+        this.getCurrentWeather(
+          cities[key].apiUrl,
+          cities[key].image,
+          cities[key].forecast
+        );
+      }
+    }
   }
 
   render() {

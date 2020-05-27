@@ -32,11 +32,6 @@ let cities = {
     apiUrl: `https://api.openweathermap.org/data/2.5/weather?appid=${API_KEY}&units=metric&id=2968815`,
     image: "https://wallpaperset.com/w/full/e/0/4/24876.jpg",
   },
-  vancouver: {
-    apiUrl: `https://api.openweathermap.org/data/2.5/weather?appid=${API_KEY}&units=metric&id=5814616`,
-    image:
-      "https://images.wallpapersden.com/image/download/vancouver-canada-british-columbia_16957_1920x1080.jpg",
-  },
 };
 
 export default class App extends Component {

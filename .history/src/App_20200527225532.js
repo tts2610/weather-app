@@ -6,11 +6,6 @@ import Carosel from "./components/Carosel";
 let API_KEY = process.env.REACT_APP_APIKEY;
 
 let cities = {
-  san_francisco: {
-    apiUrl: `https://api.openweathermap.org/data/2.5/weather?appid=${API_KEY}&units=metric&id=1689969`,
-    image:
-      "https://uhdwallpapers.org/uploads/converted/18/05/17/san-francisco-cityscape-1920x1080_76474-mm-90.jpg",
-  },
   tokyo: {
     apiUrl: `https://api.openweathermap.org/data/2.5/weather?id=1850147&units=metric&appid=${API_KEY}`,
     image:
@@ -28,14 +23,10 @@ let cities = {
     apiUrl: `https://api.openweathermap.org/data/2.5/weather?appid=${API_KEY}&units=metric&id=5304640`,
     image: "https://wallpaperplay.com/walls/full/d/d/5/363385.jpg",
   },
-  paris: {
-    apiUrl: `https://api.openweathermap.org/data/2.5/weather?appid=${API_KEY}&units=metric&id=2968815`,
-    image: "https://wallpaperset.com/w/full/e/0/4/24876.jpg",
-  },
-  vancouver: {
-    apiUrl: `https://api.openweathermap.org/data/2.5/weather?appid=${API_KEY}&units=metric&id=5814616`,
+  san_francisco: {
+    apiUrl: `https://api.openweathermap.org/data/2.5/weather?appid=${API_KEY}&units=metric&id=1689969`,
     image:
-      "https://images.wallpapersden.com/image/download/vancouver-canada-british-columbia_16957_1920x1080.jpg",
+      "https://i.pinimg.com/originals/47/a2/41/47a241c3dbda3e429a785e2f1832cb98.png",
   },
 };
 
