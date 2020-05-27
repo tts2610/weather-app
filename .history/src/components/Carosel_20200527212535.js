@@ -19,7 +19,7 @@ export default function Carosel({ cities }) {
           </div>
           <div className="temperature">
             <i className="fas fa-temperature-low"></i> : {element.temperature}
-            &deg;C / {((element.temperature * 9) / 5 + 32).toFixed(2)} &deg;F
+            &deg;C / {(element.temperature * 9) / 5 + 32} &deg;C
           </div>
         </Carousel.Caption>
       </Carousel.Item>

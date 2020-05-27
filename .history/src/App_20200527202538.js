@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
+import { css } from "@emotion/core";
 import MySpinner from "./components/Spinner";
 import Carosel from "./components/Carosel";
 let API_KEY = process.env.REACT_APP_APIKEY;
@@ -36,42 +37,52 @@ export default class App extends Component {
 
   getCurrentWeather = async (apiUrl, image) => {
     // let url_1 = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=metric`
-    let data = await fetch(apiUrl);
-    let result = await data.json();
+    let data_1 = await fetch(apiUrl);
+    let result_1 = await data_1.json();
     this.setState({
       cities: [
         ...this.state.cities,
         {
-          locationName: result.name,
-          temperature: result.main.temp,
-          description: result.weather[0].description,
+          locationName: result_1.name,
+          temperature: result_1.main.temp,
+          description: result_1.weather[0].description,
           image: image,
         },
       ],
+      isLoading: false,
     });
+    // console.log(result_1);
   };
 
   getCurrentCityWeather = async (lon, lat) => {
     let url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=metric`;
-    let result;
-    try {
-      let data = await fetch(url);
-      result = await data.json();
-      this.setState({
-        cities: [
-          ...this.state.cities,
-          {
-            locationName: result.name,
-            temperature: result.main.temp,
-            description: result.weather[0].description,
-            image: "https://wallpaperaccess.com/full/1631415.jpg",
-          },
-        ],
-        isLoading: false,
+
+    await fetch(url)
+      .then(function (response) {
+        if (response.status >= 400 && response.status < 600) {
+          throw new Error("Bad response from server");
+        }
+        return response;
+      })
+      .then((returnedResponse) => {
+        let result = returnedResponse.json();
+        console.log(typeof result);
+        this.setState({
+          cities: [
+            ...this.state.cities,
+            {
+              locationName: result.name,
+              temperature: result.main.temp,
+              description: result.weather[0].description,
+              image: "https://wallpaperaccess.com/full/1631415.jpg",
+            },
+          ],
+          isLoading: false,
+        });
+      })
+      .catch((error) => {
+        alert(error);
       });
-    } catch (error) {
-      alert("Error fetching weather");
-    }
   };
 
   getLocation = () => {
@@ -90,6 +101,9 @@ export default class App extends Component {
   }
 
   render() {
+    if (this.state.isLoading) {
+      return <MySpinner />;
+    }
     return (
       <div className="container-fluid text-white my-auto">
         <div className="container mx-auto my-4 py-4">
@@ -97,11 +111,7 @@ export default class App extends Component {
             <h1 className="col-12 display-4 my-2 py-3 title">
               Awesome Weather App
             </h1>
-            {this.state.isLoading ? (
-              <MySpinner />
-            ) : (
-              <Carosel cities={this.state.cities} />
-            )}
+            <Carosel cities={this.state.cities} />
           </div>
         </div>
       </div>

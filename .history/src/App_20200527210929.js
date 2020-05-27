@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
+import { css } from "@emotion/core";
 import MySpinner from "./components/Spinner";
 import Carosel from "./components/Carosel";
 let API_KEY = process.env.REACT_APP_APIKEY;
@@ -36,15 +37,15 @@ export default class App extends Component {
 
   getCurrentWeather = async (apiUrl, image) => {
     // let url_1 = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=metric`
-    let data = await fetch(apiUrl);
-    let result = await data.json();
+    let data_1 = await fetch(apiUrl);
+    let result_1 = await data_1.json();
     this.setState({
       cities: [
         ...this.state.cities,
         {
-          locationName: result.name,
-          temperature: result.main.temp,
-          description: result.weather[0].description,
+          locationName: result_1.name,
+          temperature: result_1.main.temp,
+          description: result_1.weather[0].description,
           image: image,
         },
       ],

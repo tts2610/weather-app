@@ -1,7 +1,6 @@
 body {
     height: 100%;
     background-color: black;
-    font-family: "Great Vibes", cursive;
 }
 
 .spinner {
@@ -34,14 +33,15 @@ body {
 }
 
 .description {
-    font-size: 60px;
+    font-size: 50px;
     font-weight: 500;
 }
 
 .temperature {
-    font-size: 50px;
+    font-size: 30px;
 }
 
 .title {
     font-size: 80px;
+    font-family: "Great Vibes", cursive;
 }
