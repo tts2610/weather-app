@@ -1,0 +1,16 @@
+body {
+    height: 100%;
+    background-color: black;
+}
+
+.spinner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.caption {
+    background-color: black;
+    opacity: 0.5;
+}

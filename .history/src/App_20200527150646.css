@@ -1,0 +1,15 @@
+body {
+    height: 100%;
+    background-color: black;
+}
+
+.spinner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.inner-spinner {
+    width: 500px;
+}

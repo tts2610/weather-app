@@ -1,0 +1,9 @@
+body {
+    height: 100%;
+    background-color: black;
+}
+
+.spinner {
+    display: flex;
+    justify-content: center;
+}
