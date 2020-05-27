@@ -126,7 +126,6 @@ export default class App extends Component {
 
   componentDidMount() {
     this.getLocation();
-    setTimeout(this.setState({ isLoading: false }), 5000);
   }
 
   render() {

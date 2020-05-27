@@ -72,6 +72,7 @@ export default class App extends Component {
               image: image,
             },
           ],
+          isLoading: false,
         });
       })
       .catch((error) => {
@@ -126,7 +127,6 @@ export default class App extends Component {
 
   componentDidMount() {
     this.getLocation();
-    setTimeout(this.setState({ isLoading: false }), 5000);
   }
 
   render() {

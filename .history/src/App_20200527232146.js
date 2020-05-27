@@ -72,6 +72,7 @@ export default class App extends Component {
               image: image,
             },
           ],
+          isLoading: true,
         });
       })
       .catch((error) => {
@@ -126,11 +127,10 @@ export default class App extends Component {
 
   componentDidMount() {
     this.getLocation();
-    setTimeout(this.setState({ isLoading: false }), 5000);
   }
 
   render() {
-    if (this.state.isLoading) return <MySpinner />;
+    if (!this.state.isLoading) return <MySpinner />;
     return (
       <div className="container-fluid text-white my-auto">
         <div className="container mx-auto my-4 py-4">
