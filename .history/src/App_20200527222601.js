@@ -63,6 +63,10 @@ export default class App extends Component {
       .catch((error) => {
         alert(`Data could not be fetched ${error.message}`);
       });
+
+    // // let url_1 = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=metric`
+    // let data = await fetch(apiUrl);
+    // let result = await data.json();
   };
 
   getCurrentCityWeather = (lon, lat) => {

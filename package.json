@@ -10,10 +10,13 @@
     "bootstrap": "^4.5.0",
     "react": "^16.13.1",
     "react-bootstrap": "^1.0.1",
+    "react-delay": "^0.1.0",
+    "react-delay-render": "^0.1.2",
     "react-dom": "^16.13.1",
     "react-scripts": "3.4.1",
     "react-spinkit": "^3.0.0",
-    "react-spinners": "^0.8.3"
+    "react-spinners": "^0.8.3",
+    "use-delayed-render": "0.0.5"
   },
   "scripts": {
     "start": "react-scripts start",

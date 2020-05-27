@@ -34,69 +34,45 @@ export default class App extends Component {
     };
   }
 
-  getCurrentWeather = (apiUrl, image) => {
-    fetch(apiUrl)
-      .then((response) => {
-        if (response.ok) {
-          return response;
-        } else {
-          let error = new Error(
-            `Error ${response.status} is ${response.statusText}`
-          );
-          throw error;
-        }
-      })
-      .then((response) => response.json())
-      .then((data) => {
-        this.setState({
-          cities: [
-            ...this.state.cities,
-            {
-              locationName: data.name,
-              temperature: data.main.temp,
-              description: data.weather[0].description,
-              image: image,
-            },
-          ],
-        });
-      })
-      .catch((error) => {
-        alert(`Data could not be fetched ${error.message}`);
-      });
+  getCurrentWeather = async (apiUrl, image) => {
+    // let url_1 = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=metric`
+    let data = await fetch(apiUrl);
+    let result = await data.json();
+    this.setState({
+      cities: [
+        ...this.state.cities,
+        {
+          locationName: result.name,
+          temperature: result.main.temp,
+          description: result.weather[0].description,
+          image: image,
+        },
+      ],
+    });
   };
 
-  getCurrentCityWeather = (lon, lat) => {
+  getCurrentCityWeather = async (lon, lat) => {
     let url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=metric`;
-
-    fetch(url)
-      .then((response) => {
-        if (response.ok) {
-          return response;
-        } else {
-          let error = new Error(
-            `Error ${response.status} is ${response.statusText}`
-          );
-          throw error;
-        }
-      })
-      .then((response) => response.json())
-      .then((data) => {
-        this.setState({
-          cities: [
-            ...this.state.cities,
-            {
-              locationName: data.name,
-              temperature: data.main.temp,
-              description: data.weather[0].description,
-              image: "https://wallpaperaccess.com/full/1631415.jpg",
-            },
-          ],
-          isLoading: false,
-        });
-      })
-      .catch((error) => {
-        alert(`Data could not be fetched ${error.message}`);
+    let result;
+    try {
+      let data = await fetch(url);
+      result = await data.json();
+      this.setState({
+        cities: [
+          ...this.state.cities,
+          {
+            locationName: result.name,
+            temperature: result.main.temp,
+            description: result.weather[0].description,
+            image: "https://wallpaperaccess.com/full/1631415.jpg",
+          },
+        ],
+        isLoading: false,
       });
+      console.log(result);
+    } catch (error) {
+      alert("Error fetching weather");
+    }
   };
 
   getLocation = () => {
@@ -115,7 +91,6 @@ export default class App extends Component {
   }
 
   render() {
-    if (this.state.isLoading) return <MySpinner />;
     return (
       <div className="container-fluid text-white my-auto">
         <div className="container mx-auto my-4 py-4">
@@ -123,8 +98,11 @@ export default class App extends Component {
             <h1 className="col-12 display-4 my-2 py-3 title">
               Awesome Weather App
             </h1>
-
-            <Carosel cities={this.state.cities} />
+            {this.state.isLoading ? (
+              <MySpinner />
+            ) : (
+              <Carosel cities={this.state.cities} />
+            )}
           </div>
         </div>
       </div>

@@ -63,6 +63,10 @@ export default class App extends Component {
       .catch((error) => {
         alert(`Data could not be fetched ${error.message}`);
       });
+
+    // // let url_1 = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=metric`
+    // let data = await fetch(apiUrl);
+    // let result = await data.json();
   };
 
   getCurrentCityWeather = (lon, lat) => {
@@ -97,6 +101,27 @@ export default class App extends Component {
       .catch((error) => {
         alert(`Data could not be fetched ${error.message}`);
       });
+
+    // let result;
+    // try {
+    //   let data = await fetch(url);
+    //   result = await data.json();
+    //   this.setState({
+    //     cities: [
+    //       ...this.state.cities,
+    //       {
+    //         locationName: result.name,
+    //         temperature: result.main.temp,
+    //         description: result.weather[0].description,
+    //         image: "https://wallpaperaccess.com/full/1631415.jpg",
+    //       },
+    //     ],
+    //     isLoading: false,
+    //   });
+    //   console.log(result);
+    // } catch (error) {
+    //   alert("Error fetching weather");
+    // }
   };
 
   getLocation = () => {
@@ -115,7 +140,7 @@ export default class App extends Component {
   }
 
   render() {
-    if (this.state.isLoading) return <MySpinner />;
+    if (!this.state.isLoading) return <MySpinner />;
     return (
       <div className="container-fluid text-white my-auto">
         <div className="container mx-auto my-4 py-4">

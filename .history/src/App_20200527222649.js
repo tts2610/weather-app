@@ -101,7 +101,10 @@ export default class App extends Component {
 
   getLocation = () => {
     navigator.geolocation.getCurrentPosition((post) => {
-      this.getCurrentCityWeather(post.coords.longitude, post.coords.latitude);
+      setTimeout(
+        this.getCurrentCityWeather(post.coords.longitude, post.coords.latitude),
+        5000
+      );
     });
   };
 
