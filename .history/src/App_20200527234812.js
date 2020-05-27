@@ -77,9 +77,6 @@ export default class App extends Component {
       .catch((error) => {
         alert(`Data could not be fetched ${error.message}`);
       });
-    setTimeout(() => {
-      this.setState({ isLoading: false });
-    }, 4000);
   };
 
   getCurrentCityWeather = (lon, lat) => {
@@ -129,6 +126,12 @@ export default class App extends Component {
 
   componentDidMount() {
     this.getLocation();
+    setTimeout(temp(), 5000);
+  }
+
+  temp() {
+    alert("cccc");
+    this.setState({ isLoading: false });
   }
 
   render() {
