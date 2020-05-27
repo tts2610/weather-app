@@ -66,7 +66,7 @@ export default class App extends Component {
           locationName: result_1.name,
           temperature: result_1.main.temp,
           description: result_1.weather[0].description,
-          image: "https://wallpaperaccess.com/full/1631415.jpg",
+          image: "https://images5.alphacoders.com/459/459765.jpg",
         },
       ],
       isLoading: false,
@@ -75,17 +75,20 @@ export default class App extends Component {
 
   getLocation = () => {
     navigator.geolocation.getCurrentPosition((post) => {
-      this.getCurrentCityWeather(post.coords.longitude, post.coords.latitude);
+      this.getCurrentWeather(post.coords.longitude, post.coords.latitude);
     });
   };
 
   componentDidMount() {
-    this.getLocation();
+    // this.getLocation();
     for (var key in cities) {
+      // check if the property/key is defined in the object itself, not in parent
       if (cities.hasOwnProperty(key)) {
+        // console.log(key, cities[key]);
         this.getCurrentWeather(cities[key].apiUrl, cities[key].image);
       }
     }
+    // setTimeout(() => this.setState({ isLoading: false }), 3000);
   }
 
   render() {

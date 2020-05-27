@@ -29,14 +29,18 @@ body {
 }
 
 .locationName {
-    font-size: 80px;
+    font-size: 100px;
 }
 
 .description {
-    font-size: 50px;
+    font-size: 80px;
     font-weight: 500;
 }
 
 .temperature {
-    font-size: 30px;
+    font-size: 60px;
+}
+
+.myCarousel {
+    border: white 1px solid;
 }

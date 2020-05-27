@@ -40,3 +40,7 @@ body {
 .temperature {
     font-size: 30px;
 }
+
+.myCarousel {
+    border: white 1px solid;
+}

@@ -29,7 +29,7 @@ body {
 }
 
 .locationName {
-    font-size: 80px;
+    font-size: 100px;
 }
 
 .description {
@@ -39,4 +39,8 @@ body {
 
 .temperature {
     font-size: 30px;
+}
+
+.myCarousel {
+    border: white 1px solid;
 }

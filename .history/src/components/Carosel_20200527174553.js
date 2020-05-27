@@ -15,7 +15,7 @@ export default function Carosel({ cities }) {
             <i className="fal fa-city"></i> : {element.locationName}
           </div>
           <div className="description">
-            <i className="far fa-thunderstorm-moon"></i> : {element.description}
+            <i class="far fa-thunderstorm-moon"></i> : {element.description}
           </div>
           <div className="temperature">
             <i className="fas fa-temperature-low"></i> : {element.temperature}

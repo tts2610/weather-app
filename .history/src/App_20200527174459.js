@@ -66,7 +66,7 @@ export default class App extends Component {
           locationName: result_1.name,
           temperature: result_1.main.temp,
           description: result_1.weather[0].description,
-          image: "https://wallpaperaccess.com/full/1631415.jpg",
+          image: "https://images5.alphacoders.com/459/459765.jpg",
         },
       ],
       isLoading: false,

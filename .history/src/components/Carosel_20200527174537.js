@@ -12,10 +12,10 @@ export default function Carosel({ cities }) {
         />
         <Carousel.Caption className="caption">
           <div className="locationName">
-            <i className="fal fa-city"></i> : {element.locationName}
+            <i class="fal fa-city"></i> : {element.locationName}
           </div>
           <div className="description">
-            <i className="far fa-thunderstorm-moon"></i> : {element.description}
+            <i class="far fa-thunderstorm-moon"></i> : {element.description}
           </div>
           <div className="temperature">
             <i className="fas fa-temperature-low"></i> : {element.temperature}
